@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2019 Stackinsights to present
+* All rights reserved
+*/
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.apache.stackinsights.apm.network.management.v3.compat";
+option csharp_namespace = "StackInsights.NetworkProtocol.V3.Compat";
+option go_package = "stackinsights.apache.org/repo/goapi/collect/management/v3/compat";
+option deprecated = true;
+
+import "common/Command.proto";
+import "management/Management.proto";
+
+// Define the service reporting the extra information of the instance.
+service ManagementService {
+    // Report custom properties of a service instance.
+    rpc reportInstanceProperties (stackinsights.v3.InstanceProperties) returns (stackinsights.v3.Commands) {
+    }
+
+    // Keep the instance alive in the backend analysis.
+    // Only recommend to do separate keepAlive report when no trace and metrics needs to be reported.
+    // Otherwise, it is duplicated.
+    rpc keepAlive (stackinsights.v3.InstancePingPkg) returns (stackinsights.v3.Commands) {
+
+    }
+}

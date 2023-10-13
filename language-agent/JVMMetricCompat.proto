@@ -1,0 +1,21 @@
+/*
+* Copyright (c) 2019 Stackinsights to present
+* All rights reserved
+*/
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.apache.stackinsights.apm.network.language.agent.v3.compat";
+option csharp_namespace = "StackInsights.NetworkProtocol.V3.Compat";
+option go_package = "stackinsights.apache.org/repo/goapi/collect/language/agent/v3/compat";
+option deprecated = true;
+
+import "common/Command.proto";
+import "language-agent/JVMMetric.proto";
+
+// Define the JVM metrics report service.
+service JVMMetricReportService {
+    rpc collect (stackinsights.v3.JVMMetricCollection) returns (stackinsights.v3.Commands) {
+    }
+}
